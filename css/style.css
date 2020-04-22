@@ -1,2 +1,85 @@
+/*---------------Variabler---------------*/
+/*--------------Inheritances-------------*/
+/* Load Arla Fonts */
+/* Arla Bold Font Face */
+@font-face {
+  font-family: "Arla";
+  src: url("../fonts/arlaifbd.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/arlaifbd.eot?#iefix") format("embedded-opentype"), url("../fonts/arlaifbd.otf") format("opentype"), url("../fonts/arlaifbd.svg") format("svg"), url("../fonts/arlaifbd.ttf") format("truetype"), url("../fonts/arlaifbd.woff") format("woff"), url("../fonts/arlaifbd.woff2") format("woff2");
+  /* Modern Browsers */
+  font-weight: 700;
+  font-style: normal; }
+
+/* Arla Normal Font Face */
+@font-face {
+  font-family: "Arla";
+  src: url("../fonts/arlaifrg.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/arlaifrg.eot?#iefix") format("embedded-opentype"), url("../fonts/arlaifrg.otf") format("opentype"), url("../fonts/arlaifrg.svg") format("svg"), url("../fonts/arlaifrg.ttf") format("truetype"), url("../fonts/arlaifrg.woff") format("woff"), url("../fonts/arlaifrg.woff2") format("woff2");
+  /* Modern Browsers */
+  font-weight: 400;
+  font-style: normal; }
+
+/* Arla Light Font Face */
+@font-face {
+  font-family: "Arla";
+  src: url("../fonts/arlaiflt.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/arlaiflt.eot?#iefix") format("embedded-opentype"), url("../fonts/arlaiflt.otf") format("opentype"), url("../fonts/arlaiflt.svg") format("svg"), url("../fonts/arlaiflt.ttf") format("truetype"), url("../fonts/arlaiflt.woff") format("woff"), url("../fonts/arlaiflt.woff2") format("woff2");
+  /* Modern Browsers */
+  font-weight: 300;
+  font-style: normal; }
+
+/* Using the fonts */
+/* line 88, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+html, body {
+  font-family: 'Arla', Helvetica, Arial, sans-serif;
+  font-size: 24px; }
+
+/* line 93, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+* {
+  padding: 0;
+  margin: 0; }
+
+/* line 99, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+body {
+  overflow-x: hidden; }
+
+/* line 103, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+.question-icon {
+  width: 70px;
+  height: 70px;
+  padding: 5px; }
+
+/* line 109, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+.icon-border {
+  background-color: #EBEBEC;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  border: 5px solid #006C3A; }
+
+/* line 121, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+.grid1 {
+  grid-area: grid1; }
+
+/* line 124, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+.grid2 {
+  grid-area: grid2; }
+
+/* line 127, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+.grid3 {
+  grid-area: grid3; }
+
+/* line 131, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+.grid-game-catergories {
+  display: grid;
+  grid-template-areas: 'grid1 grid2' 'grid3 grid3';
+  justify-items: center; }
 
 /*# sourceMappingURL=style.css.map */
