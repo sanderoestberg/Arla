@@ -89,6 +89,7 @@ $gold: #D4AF34;
   html, body {
     font-family: 'Arla', Helvetica, Arial, sans-serif;
     font-size: 24px;
+    color: $darkgray;
   }
 
 * {
@@ -233,4 +234,36 @@ p{
   }
 }
 
+/* --------> INFO SIDE STYLES <---------- */
 
+#info{
+  min-height: calc(100vh - 75px);
+  width: 100%;
+display: flex;
+background-image: url(../images/milk-phone.png);
+background-size: cover;
+}
+
+.arlalogoinfo{
+  width: 45%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.underoverskrift{
+  color: $darkgray;
+  font-weight: 700;
+  border-bottom: 3px solid $darkgray;
+  width: 160px;
+  text-align: center;
+}
+.infoinner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+li {
+  margin-left: 10px;
+  display: list-item;
+}
