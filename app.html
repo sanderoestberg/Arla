@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sander og Oskar">
+    <title>Arla</title>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onhashchange="pageChange()">
+    <section id="login" class="page">
+        <section id="firebaseui-auth-container"></section>
+    </section>
+    <section id="home" class="page"></section>
+    <section id="categories" class="page">
+        <div class="grid-test-wrapper">
+        </div>
+    </section>
+    <section id="questions"></section>
+    <section id="profile" class="page">
+    <a href="#login" onclick="logout()">Logout</a>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Type your name" required>
+      <button type="button" name="button" onclick="updateUser()">Save</button>
+    </form>
+    </section>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/app.js" type="module"></script>
+
+</body>
+
+</html>
