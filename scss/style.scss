@@ -100,12 +100,40 @@ $gold: #D4AF34;
   
   body {
     overflow-x: hidden;
+    background-image: url(../images/milk-phone.png);
+    background-size: cover;
   }
 
   .page {
     display: none;
+
+        /*min heigh is screen heigh minus height of tabbar */
+   min-height: calc(100vh - 128px);
+    animation: fadeIn 0.4s;
+  /* padding equals height of tabbar */
+   padding-bottom: 65px;
+}
+
+
+/* ---------- animations ---------- */
+/* fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0
   }
 
+  to {
+    opacity: 1
+  }
+}
+
+  .logowrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
   .question-icon{
     width: 70px;
     height: 70px;
@@ -248,16 +276,12 @@ p{
 
 /* --------> INFO SIDE STYLES <---------- */
 
-#info{
-height: 100vh;
-width: 100%;
+#infodiv{
 display: flex;
-background-image: url(../images/milk-phone.png);
-background-size: cover;
 }
 
 .arlalogoinfo{
-  width: 40%;
+  width: 40%; max-width: 200px;
   height: auto;
   margin-top: 15px;
 }
@@ -277,7 +301,8 @@ background-size: cover;
 }
 
 ul{
-  list-style-position: outside;
+  list-style-position: inside;
+justify-content: center;
 }
 li {
   margin-left: 10px;
@@ -292,28 +317,28 @@ h4{
 }
 
 .infolist{
-width: 80%;
+width: auto;
 }
 
 /* ----------> FORUM STYLES <---------- */
-#forum{
-  height: 100%;
-  width: 100%;
+#forumdiv{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 
+
 .forumouter{
   display: grid;
   justify-content: center;
-  width: 95%;
+  width: 95%; max-width: 700px;
   height: 170px;
   border: 3px solid $darkgreen;
   border-radius: 5px;
   @extend %shadow;
   margin-bottom: 15px;
+  background-color: white;
 
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 25% 50% 25%;
@@ -355,7 +380,7 @@ p{
   justify-content: flex-start;
   align-items: center;
   padding: 5px;
-
+  padding-right: 0;
   img{
     height: 70%;
     padding: 0;
@@ -412,3 +437,136 @@ h5{
   align-items: center;
   padding: 5px
 }
+
+/* ---------> Style Topic <--------- */
+
+#forumtopicdiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#topicouter{
+  margin-top: 20px;
+}
+
+.forumreplyyellow{
+  align-self: flex-end;
+  display: grid;
+  justify-content: center;
+  width: 70%;
+  height: 120px;
+  border: 3px solid $yellow;
+  border-radius: 5px;
+  @extend %shadow;
+  margin-bottom: 15px;
+  margin-right: 2%;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 30% 40% 30%;
+
+img{
+  height: 70%;
+  margin: 5px;
+
+}
+p{
+  font-size: 13px;
+}
+  
+}
+
+.forumreplygreen{
+  align-self: flex-start;
+  display: grid;
+  justify-content: center;
+  width: 70%;
+  height: 120px;
+  border: 3px solid $darkgreen;
+  border-radius: 5px;
+  @extend %shadow;
+  margin-bottom: 15px;
+  margin-left: 2%;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 30% 40% 30%;
+
+img{
+  height: 70%;
+  margin: 5px;
+
+}
+p{
+  font-size: 13px;
+}
+  
+}
+
+.forumreplyyellow, .forumreplygreen{
+  background-color: white;
+}
+
+
+/* -------> TABBAR <------ */
+/* styling af tabbar */
+.tabbar {
+  background-color: $lightgray;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  @extend %shadow;
+  display: flex;
+  justify-content: center;
+
+  img {
+    height: 40px;
+    width: auto;
+  }
+}
+
+/* Style på og omkring links i baren */
+.tabbar a {
+  display: inline-block;
+  padding: 10px 26px;
+
+}
+
+/* style ved hover */
+.tabbar a:hover {
+  background-color: $lightgray;
+}
+
+/* style når en side er aktiv*/
+.tabbar a.active {
+  background-color: $lightgray;
+}
+
+
+/* ---------> MEDIA Q <------- */
+
+@media screen and (min-width: 700px){
+
+  body{
+    background-image: url(../images/milk-laptop.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .infolist{
+    margin-top: px;
+  }
+
+  .forumouter{
+ 
+  p{
+    font-size: 15px;
+  }
+    
+  }
+
+  .chatcow {
+    width: 92%;
+  }
+}
+

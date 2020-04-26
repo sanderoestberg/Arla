@@ -4,6 +4,7 @@ export default class SpaService {
   constructor(defaultPage) {
     this.defaultPage = defaultPage;
     this.pages = document.querySelectorAll(".page");
+    this.navItems = document.querySelectorAll(".tabbar a");
     this.pageChange();
   }
 
@@ -18,7 +19,19 @@ export default class SpaService {
   showPage(pageId) {
     this.hideAllPages();
     document.querySelector(`#${pageId}`).style.display = "block";
+    this.setActiveTab(pageId);
   }
+
+    // sets active tabbar/ menu item
+    setActiveTab(pageId) {
+      for (let navItem of this.navItems) {
+        if (`#${pageId}` === navItem.getAttribute("href")) {
+          navItem.classList.add("active");
+        } else {
+          navItem.classList.remove("active");
+        }
+      }
+    }
 
 
 
