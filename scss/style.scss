@@ -5,7 +5,7 @@ $darkgreen: #006C3A;
 $yellow: #FFCC32;
 $darkgray: #363E42;
 $gray: #7C8180;
-$lightgray: #D1D2CE;
+$lightgray: #E4E4E4;
 $gold: #D4AF34;
 
 /*--------------Inheritances-------------*/
@@ -345,6 +345,7 @@ width: auto;
 
 img{
   height: 70%;
+  width: auto;
   margin: 5px;
 
 }
@@ -520,7 +521,7 @@ p{
   justify-content: center;
 
   img {
-    height: 40px;
+    height: 55px;
     width: auto;
   }
 }
@@ -534,12 +535,12 @@ p{
 
 /* style ved hover */
 .tabbar a:hover {
-  background-color: $lightgray;
+  background-color: $darkgray;
 }
 
 /* style når en side er aktiv*/
 .tabbar a.active {
-  background-color: $lightgray;
+  background-color: $darkgray;
 }
 
 
@@ -554,19 +555,25 @@ p{
   }
 
   .infolist{
-    margin-top: px;
+    margin-top: 80px;
   }
 
   .forumouter{
  
   p{
-    font-size: 15px;
+    font-size: 17px;
   }
     
   }
 
-  .chatcow {
+  #chatcow2, #chatcow1, #chatcow3 {
+    height: auto;
     width: 92%;
+    
+  }
+
+  .forumouter{
+    height: auto;
   }
 }
 

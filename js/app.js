@@ -46,7 +46,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     _currentUser = user;
     updateUser();
     init();
-    _spaService.showPage("categories");
+    _spaService.showPage("forum");
   }
 
   window.updateUser = function() {
