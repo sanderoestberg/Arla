@@ -125,6 +125,18 @@ $gold: #D4AF34;
     
   }
 
+.gold-border{
+  background-color: #EBEBEC;
+      padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+  border: 6px solid #D4AF34;
+}
+
   /*
 .grid1{
     grid-area: grid1;

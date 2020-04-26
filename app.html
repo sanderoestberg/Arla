@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Sander og Oskar">
     <title>Arla</title>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -19,22 +19,70 @@
         <div class="grid-test-wrapper">
         </div>
     </section>
-    <section id="questions"></section>
-    <section id="profile" class="page">
-    <a href="#login" onclick="logout()">Logout</a>
-    <form>
-      <label for="name">Name</label>
-      <input type="text" id="name" placeholder="Type your name" required>
-      <button type="button" name="button" onclick="updateUser()">Save</button>
-    </form>
+    <section id="Animals" class="page" onclick="init()">
+        <div class="grid-icon-wrapper">
+            <article class="grid-solo">
+                <a href="#categories">
+                    <div class="icon-border" id="cow-border">
+                        <img id="cow-icon" src="images/cow.svg" class="question-icon" alt="">
+                        <p><span id="question-number">0</span>/3</p>
+                    </div>
+                </a>
+            </article>
+
+        </div>
+        <article class="question-header">
+            <h1>Animals</h1>
+            <div class="breakline"></div>
+        </article>
+        <section class="question-container">
+            <article class="question">
+                <div class="number-text">
+                    <p><span>1.</span></p>
+                    <p>How many cows do you have?</p>
+                </div>
+                <div class="question-input">
+                    <input id="q1" type="number" required onchange=inputValue(this.value)>
+                    <p>cows</p>
+                </div>
+            </article>
+            <article class="question">
+                <div class="number-text">
+                    <p><span>2.</span></p>
+                    <p>How many kilos of milk do you produce in a year per cow?</p>
+                </div>
+                <div class="question-input">
+                    <input id="q2" type="number" required onchange=inputValue2(this.value)>
+                    <p>kg</p>
+                </div>
+            </article>
+            <article class="question">
+                <div class="number-text">
+                    <p><span>3.</span></p>
+                    <p>How many kilos of dry matter does your cow eat per year?</p>
+                </div>
+                <div class="question-input">
+                    <input id="q3" type="number" required onchange=inputValue3(this.value)>
+                    <p>kg</p>
+                </div>
+            </article>
+        </section>
     </section>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-<script src="js/firebase-config.js"></script>
-<script src="js/app.js" type="module"></script>
+    <section id="profile" class="page">
+        <a href="#login" onclick="logout()">Logout</a>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Type your name" required>
+            <button type="button" name="button" onclick="updateUser()">Save</button>
+        </form>
+    </section>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js" type="module"></script>
 
 </body>
 

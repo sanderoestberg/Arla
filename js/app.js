@@ -64,6 +64,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     });
 }  
 //----------------------------------------------------------------------------//
+window.init = function() {
+  init();}
+
 function init() {
     _userRef.doc(_currentUser.uid).onSnapshot({
       includeMetadataChanges: true
@@ -74,7 +77,6 @@ function init() {
           ...userData.data()
         };
         
-        //loadCategories()
         
       }
     });
@@ -85,25 +87,12 @@ function init() {
           category.id = doc.id;
           _categories.push(category);
         });
-        appendQuestions(_categories);
         appendCategories(_categories);
       });
 }
 //----------------------------------------------------------------------------//
 
-/* function loadCategories() {
-    _questionRef.onSnapshot(function(snapshotData) {
-        _categories = [];
-        snapshotData.forEach(function(doc) {
-          let category = doc.data();
-          category.id = doc.id;
-          _categories.push(category);
-        });
-        appendQuestions(_categories);
-        appendCategories(_categories);
-      });
-}
-*/
+
 function appendCategories(categories) {
     let htmlTemplate = "";
     for (let category of categories) {
@@ -112,7 +101,7 @@ function appendCategories(categories) {
     <a href="#${category.id}">
           <div class="icon-border">
               <img src="${category.img}" class="question-icon" alt="">
-              <p>0/5</p>
+              <p><span>${category.animalsCounter}</span>/${category.numberOfQuestions}</p>
           </div>
           </a>
   </article>
@@ -121,43 +110,107 @@ function appendCategories(categories) {
     document.querySelector('.grid-test-wrapper').innerHTML = htmlTemplate;    
 }
 
-
-function appendQuestions(categories) {
-    let htmlTemplate = "";
-    for (let category of categories) {
-      htmlTemplate += `
-      <section id="${category.id}" class="page">
-      <div class="grid-icon-wrapper">
-  <a href="#categories">
-      <article class="grid-solo">
-          <div class="icon-border">
-              <img src="${category.img}" class="question-icon" alt="">
-              <p><span id="question-number">0</span>/5</p>
-          </div>
-        </article>
-  </a>
-</div>
-<article class="question-header">
-<h1>${category.id}</h1>
-<div class="breakline"></div>
-</article>
-<section class="question-container">
-<article class="question">
-<div class="number-text"><p><span>1.</span></p><p>${category.Q1}</p></div>
-<div class="question-input">
-<input type="number" required onchange=inputValue(this.value)><p>cows</p>
-</div>
-</article>
-<article class="question">
-<div class="number-text"><p><span>2.</span></p><p>${category.Q2}</p></div>
-<div class="question-input">
-<input type="number" required onchange=inputValue(this.value)><p>kg</p>
-</div>
-</article>
-
-</section>
-      </section>
-      `;
-    }
-    document.querySelector('#questions').innerHTML = htmlTemplate;   
+let animalsCounter = 0;
+let question1 = "";
+let question2 = "";
+function gold(){
+  if(animalsCounter === 3){
+    document.getElementById("cow-icon").src = "images/cow-gold.svg";
+    document.querySelector("#cow-border").style.border = "6px solid #D4AF34;"
+    document.querySelector(".icon-border").style.border = "0px solid #D4AF34;"
+    
+  }
+  else {
+    document.getElementById("cow-icon").src = "images/cow.svg";  
+  }
 }
+window.inputValue = function (value) {
+  let inputField = document.querySelector('#q1')
+  console.log(value)
+  if (value > 0) {
+  inputField.style.border = "3px solid #006C3A";
+  animalsCounter ++
+  question1 = value;
+  }
+  else {
+      inputField.style.border = "none";
+      animalsCounter --;
+  }
+  document.querySelector('#question-number').innerHTML = animalsCounter;
+  gold();
+  _questionRef.doc('Animals').set({
+    question1,
+    animalsCounter
+}, {
+    merge: true
+  });
+  }
+
+window.inputValue2 = function (value) {
+  let inputField = document.querySelector('#q2')
+  console.log(value)
+  if (value > 0) {
+  inputField.style.border = "3px solid #006C3A";
+  animalsCounter ++;
+  question2 = value;
+  }
+  else {
+      inputField.style.border = "none";
+      animalsCounter --;
+  }
+  document.querySelector('#question-number').innerHTML = animalsCounter;
+  gold();
+  _questionRef.doc('Animals').set({
+    question2,
+    animalsCounter
+}, {
+    merge: true
+  });
+  }
+
+window.inputValue3 = function (value) {
+  let inputField = document.querySelector('#q3')
+  console.log(value)
+  if (value > 0) {
+  inputField.style.border = "3px solid #006C3A";
+  animalsCounter ++;
+  question2 = value;
+  }
+  else {
+      inputField.style.border = "none";
+      animalsCounter --;
+  }
+  document.querySelector('#question-number').innerHTML = animalsCounter;
+  gold();
+  _questionRef.doc('Animals').set({
+    question2,
+    animalsCounter
+}, {
+    merge: true
+  });
+  }
+
+
+  function AnimalCounterDB() {
+    //showLoader(true);
+    // Når man har valgt dato og klikker på knappen "tilføj" laver den en ny collection under userID
+    // Hvor den tilføjer madId. Samt ExpireDate fra global variablen. 
+    _userRef.doc(_currentUser.uid).collection('fridge').add({
+      animalsCounter
+    });
+  }
+
+window.addAnimal = function() {
+  addAnimal();
+}
+  function addAnimal() {
+
+    _questionRef.doc('Animals').set({
+        question1,
+        question2,
+        question3: 132,
+        animalsCounter
+    }, {
+        merge: true
+      });
+    }
