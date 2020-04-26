@@ -205,22 +205,21 @@ body {
 
 /* line 267, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 ul {
-  list-style-position: outside;
-  list-style-image: url("/images/Arla_Logo_RGB_Small.png"); }
+  list-style-position: outside; }
 
-/* line 271, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 270, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 li {
   margin-left: 10px;
   display: list-item;
   line-height: 30px;
   margin-bottom: 20px; }
 
-/* line 278, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 277, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 h4 {
   font-size: 30px;
   margin: 30px 0 20px; }
 
-/* line 283, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 282, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 .infolist {
   width: 80%; }
 
