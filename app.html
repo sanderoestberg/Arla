@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="dn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sander og Oskar">
+    <title>Arlagården Plus</title>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+  <!-- navigation til vores SPA -->
+  <nav id="tabbar" class="tabbar hide">
+    <a href="#categories"> <img src="images/cat.svg"> </a>
+    <a href="#forum"> <img src="images/Asset 1.svg"> </a>
+    <a href="#info"> <img src="images/Asset 2.svg"> </a>
+    <a href="#chart"> <img src="images/Asset 2.svg"> </a>
+
+  </nav>
+  
+
+<body onhashchange="pageChange()">
+    
+    <section id="login" class="page">
+        <section id="firebaseui-auth-container"></section>
+    </section>
+    <section id="home" class="page"></section>
+    <section id="categories" class="page">
+        <div class="logowrapper">
+        <img src="images/Arla_Logo_RGB_Small.png" alt="arla logo" class="arlalogoinfo">
+        <h3 class="underoverskrift">Gården Plus</h3>
+         </div>
+         <div class="cream-grid">
+             <div><p class="cream-text">Velkommen til Arla gården plus.<br><br>
+
+                Tak fordi du hjælper til at vi sammen kan
+                skabe en bedre og mere bæredygtig 
+                fremtid for vores børn og vores planet.<br><br>
+                
+                Vi er stolte over Arla og alle dets 
+                landmænd og sammen kan vi producere 
+                mælkeprodukter af den højeste kvalitet.<br><br>
+                
+                Vi er Arla.<br>
+                Vi skaber vores egen fremtid. </p></div>
+        <div class="grid-test-wrapper">
+        </div>
+    </div>
+    </section>
+    <section id="Animals" class="page" onclick="init()">
+        <div id="back-arrow"><a href="#" onclick="history.go(-1)"><img src="images/pil.svg"></a></div>
+        <div class="grid-icon-wrapper">
+        
+            <article class="grid-solo">
+                <a href="#categories">
+                    <div class="icon-border" id="cow-border">
+                        <img id="cow-icon" src="images/cow.svg" class="question-icon" alt="">
+                        <p><span id="question-number">0</span>/3</p>
+                    </div>
+                </a>
+            </article>
+
+        </div>
+        <article class="question-header">
+            <h1>Animals</h1>
+            <div class="breakline"></div>
+        </article>
+        <div class="media-question-container">
+        <section class="question-container">
+            <article class="question">
+                <div class="number-text">
+                    <p><span>1.</span></p>
+                    <p>How many cows do you have?</p>
+                </div>
+                <div class="question-input">
+                    <input id="q1" type="number" required onchange=inputValue(this.value)>
+                    <p>cows</p>
+                </div>
+            </article>
+            <article class="question">
+                <div class="number-text">
+                    <p><span>2.</span></p>
+                    <p>How many kilos of milk do you produce in a year per cow?</p>
+                </div>
+                <div class="question-input">
+                    <input id="q2" type="number" required onchange=inputValue2(this.value)>
+                    <p>kg</p>
+                </div>
+            </article>
+            <article class="question">
+                <div class="number-text">
+                    <p><span>3.</span></p>
+                    <p>How many kilos of dry matter does your cow eat per year?</p>
+                </div>
+                <div class="question-input">
+                    <input id="q3" type="number" required onchange=inputValue3(this.value)>
+                    <p>kg</p>
+                </div>
+            </article>
+        </section>
+    </div>
+    </section>
+    <section id="profile" class="page">
+        <a href="#login" onclick="logout()">Logout</a>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Type your name" required>
+            <button type="button" name="button" onclick="updateUser()">Save</button>
+        </form>
+    </section>
+
+
+    <section id="info" class="page">
+        <div id="#infodiv">
+        <div class="infoouter">
+            <div class="infoinner">
+                <img src="images/Arla_Logo_RGB_Small.png" alt="arla logo" class="arlalogoinfo">
+                <h3 class="underoverskrift">Gården Plus</h3>
+                <h4>Medlemsfordele</h4>
+                <ul class="infolist">
+                    <li> Adgang til Arla Gårdens
+                        eget interne landmandsforum.
+                        </li>
+                    <li>Benyttelse af Arlas eksperter
+                        bl.a. salgskonsulent eller
+                        mælkekvalitetsekspert.
+                        </li>
+                    <li>Oversigt over dit eget klima-
+                        fodtryk og din udvikling over
+                        tid.
+                        </li>
+                        <li>
+                            Med til at gøre en forskel for Arla og for vores fremtid.
+                        </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+
+    <section id="forum" class="page">
+        <div id="forumdiv">
+        <img src="images/Arla_Logo_RGB_Small.png" alt="arla logo" class="arlalogoinfo">
+        <h3 class="underoverskrift">Gården Plus</h3>
+        <h4>Opslagstavle</h4>
+
+          <div class="forumouter" >
+              <div class="profilbillede">
+            <img src="images/profil.svg" alt="profilbillede">
+            <h5><b>Anonym</b></h5>
+             </div>
+             <div class="flag">
+                 <h5>DK</h5>
+                 <img src="images/dk-flag.svg" alt="Billede af et flag med ophavsret i det danske ganske land." class="flag">
+             </div>
+             
+             <img src="images/forum-cow.png" alt="Billede af en ko" class="chatcow" id="chatcow2">
+
+            <p class="forumpost">Har brug for nogle gode råd til 
+                hvordan kan jeg blive en mere bæredygtig landmand,
+                 nogen der kan hjælpe? :-)</p>
+                
+                 <p class="tid"><i>1 time siden</i></p>
+                 <p class="comment"><i>0 kommentarer</i></p>
+                 <div class="svar">
+                     <img src="images/chat-icon.svg" alt="Chat ikon">
+                     <p><i>Svar</i></p>
+                 </div>
+
+              </div>
+
+
+
+              <div class="forumouter" id="curser" onclick="document.location='#forumtopic';return false;">
+                <div class="profilbillede">
+              <img src="images/profil.svg" alt="profilbillede">
+              <h5><b>Anonym3</b></h5>
+               </div>
+               <div class="flag">
+                   <h5>DK</h5>
+                   <img src="images/dk-flag.svg" alt="Billede af et flag med ophavsret i det danske ganske land." class="flag">
+               </div>
+              <img src="images/data2.png" alt="Billede af data" class="chatcow"  id="chatcow3">
+  
+              <p class="forumpost">Jeg har i 2019 forøget mine køers
+                mælkeproduktion med 11%. Det krævede ikke meget. Deler gerne ud af mineerfaringer
+            så du muligvis kan få samme effekt</p>
+                  
+                   <p class="tid"><i>2 dage siden</i></p>
+                   <p class="comment"><i>4 kommentarer</i></p>
+                   <div class="svar">
+                       <img src="images/chat-icon.svg" alt="Chat ikon">
+                       <p><i>Svar</i></p>
+                   </div>
+  
+                </div>
+
+
+
+                <div class="forumouter">
+                    <div class="profilbillede">
+                  <img src="images/profil.svg" alt="profilbillede">
+                  <h5><b>Peter Hansen</b></h5>
+                   </div>
+                   <div class="flag">
+                       <h5>DK</h5>
+                       <img src="images/dk-flag.svg" alt="Billede af et flag med ophavsret i det danske ganske land.">
+                   </div>
+                   <img src="images/Arla_Logo_RGB_Small.png" alt="Billede af arla" class="chatcow"  id="chatcow1">
+      
+                  <p class="forumpost">Har brug for IT-hjælp, gerne hurtigst muligt!!!
+                      Der er kommet en opdatering til et program jeg ikke helt forstår. 
+                      Den beder mig indtaste nogen tal jeg ikke ved hvor er henne.
+                  </p>
+                      
+                       <p class="tid"><i>3 dage siden</i></p>
+                       <p class="comment"><i>12 kommentarer</i></p>
+                       <div class="svar">
+                           <img src="images/chat-icon.svg" alt="Chat ikon">
+                           <p><i>Svar</i></p>
+                       </div>
+      
+                    </div>
+                </div>
+    </section>
+
+    <section id="forumtopic" class="page">
+        <div id="forumtopicdiv" onclick="document.location='#forum';return false;">
+        <img src="images/Arla_Logo_RGB_Small.png" alt="arla logo" class="arlalogoinfo" style="cursor: pointer;">
+        <h3 class="underoverskrift">Gården Plus</h3>
+
+
+             <div class="forumouter" id="topicouter">
+                <div class="profilbillede">
+              <img src="images/profil.svg" alt="profilbillede">
+              <h5><b>Anonym3</b></h5>
+               </div>
+               <div class="flag">
+                   <h5>DK</h5>
+                   <img src="images/dk-flag.svg" alt="Billede af et flag med ophavsret i det danske ganske land." class="flag">
+               </div>
+               <img src="images/data2.png" alt="Billede af en ko" class="chatcow">
+  
+              <p class="forumpost">Jeg har i 2019 forøget mine køers
+                mælkeproduktion med 11%. Det krævede ikke meget. Deler gerne ud af mineerfaringer
+            så du muligvis kan få samme effekt</p>
+                  
+                   <p class="tid"><i>2 dage siden</i></p>
+                   <p class="comment"><i>4 kommentarer</i></p>
+                   <div class="svar">
+                       <img src="images/chat-icon.svg" alt="Chat ikon">
+                       <p><i>Svar</i></p>
+                   </div>
+  
+                </div>
+                
+
+
+                <div class="forumreplyyellow">
+                    <div class="profilbillede">
+                  <img src="images/profil.svg" alt="profilbillede">
+                  <h5><b>Frank</b></h5>
+                   </div>
+                   <div class="flag">
+                       <h5>DK</h5>
+                       <img src="images/dk-flag.svg" alt="Billede af et flag med ophavsret i det danske ganske land." class="flag">
+                   </div>
+      
+                  <p class="forumpost">Hey, hvordan har du formået det om man må spørge? ;-)</p>
+                      
+                       <p class="tid"><i>2 dage siden</i></p>
+      
+                    </div>
+
+                    <div class="forumreplygreen">
+                        <div class="profilbillede">
+                      <img src="images/profil.svg" alt="profilbillede">
+                      <h5><b>Anonyum3</b></h5>
+                       </div>
+                       <div class="flag">
+                           <h5>DK</h5>
+                           <img src="images/dk-flag.svg" alt="Billede af et flag med ophavsret i det danske ganske land." class="flag">
+                       </div>
+          
+                      <p class="forumpost">Har spillet Mozart for mine køer hver gang de bliver malket</p>
+                          
+                           <p class="tid"><i>2 dage siden</i></p>
+          
+                        </div>
+
+                        <div class="forumreplyyellow">
+                            <div class="profilbillede">
+                          <img src="images/profil.svg" alt="profilbillede">
+                          <h5><b>Frank</b></h5>
+                           </div>
+                           <div class="flag">
+                               <h5>DK</h5>
+                               <img src="images/dk-flag.svg" alt="Billede af et flag med ophavsret i det danske ganske land." class="flag">
+                           </div>
+              
+                          <p class="forumpost">Hahaha den var god! Vær nu sød at del det med os :)</p>
+                              
+                               <p class="tid"><i>2 dage siden</i></p>
+              
+                            </div>
+
+                        </div>
+
+            </section>
+            <section id="chart" class="page">
+            <canvas id="myChart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>   
+            </section>
+
+                  <!-- loader  -->
+                <div id="loader">
+                 <div class="spinner"></div>
+                </div>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js" type="module"></script>
+
+</body>
+
+</html>

@@ -460,10 +460,14 @@ h5{
 
 /* ---------> Style Topic <--------- */
 
+
 #forumtopicdiv{
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 1000px;
+  margin: auto;
+  
 }
 #topicouter{
   margin-top: 20px;
@@ -523,6 +527,11 @@ p{
 
 .forumreplyyellow, .forumreplygreen{
   background-color: white;
+  max-width: 600px;
+
+}
+#curser{
+  cursor: pointer;
 }
 
 
@@ -538,6 +547,7 @@ p{
   @extend %shadow;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 
   img {
     height: 45px;
