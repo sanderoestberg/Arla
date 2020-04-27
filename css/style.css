@@ -375,17 +375,19 @@ h5 {
   padding: 5px; }
 
 /* ---------> Style Topic <--------- */
-/* line 444, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 445, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 #forumtopicdiv {
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  max-width: 1000px;
+  margin: auto; }
 
-/* line 449, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 453, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 #topicouter {
   margin-top: 20px; }
 
-/* line 453, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 457, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 .forumreplyyellow {
   align-self: flex-end;
   display: grid;
@@ -398,15 +400,15 @@ h5 {
   margin-right: 2%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 30% 40% 30%; }
-  /* line 468, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+  /* line 472, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
   .forumreplyyellow img {
     height: 70%;
     margin: 5px; }
-  /* line 473, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+  /* line 477, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
   .forumreplyyellow p {
     font-size: 13px; }
 
-/* line 479, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 483, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 .forumreplygreen {
   align-self: flex-start;
   display: grid;
@@ -419,21 +421,26 @@ h5 {
   margin-left: 2%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 30% 40% 30%; }
-  /* line 494, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+  /* line 498, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
   .forumreplygreen img {
     height: 70%;
     margin: 5px; }
-  /* line 499, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+  /* line 503, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
   .forumreplygreen p {
     font-size: 13px; }
 
-/* line 505, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 509, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 .forumreplyyellow, .forumreplygreen {
-  background-color: white; }
+  background-color: white;
+  max-width: 600px; }
+
+/* line 514, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+#curser {
+  cursor: pointer; }
 
 /* -------> TABBAR <------ */
 /* styling af tabbar */
-/* line 512, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 521, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 .tabbar {
   background-color: #E4E4E4;
   position: fixed;
@@ -442,46 +449,47 @@ h5 {
   right: 0;
   z-index: 9999;
   display: flex;
-  justify-content: center; }
-  /* line 523, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+  justify-content: center;
+  cursor: pointer; }
+  /* line 533, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
   .tabbar img {
     height: 55px;
     width: auto; }
 
 /* Style på og omkring links i baren */
-/* line 530, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 540, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 .tabbar a {
   display: inline-block;
   padding: 10px 26px; }
 
 /* style ved hover */
-/* line 537, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 547, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 .tabbar a:hover {
   background-color: #363E42; }
 
 /* style når en side er aktiv*/
-/* line 542, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+/* line 552, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
 .tabbar a.active {
   background-color: #363E42; }
 
 /* ---------> MEDIA Q <------- */
 @media screen and (min-width: 700px) {
-  /* line 551, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+  /* line 561, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
   body {
     background-image: url(../images/milk-laptop.png);
     background-size: cover;
     background-repeat: no-repeat; }
-  /* line 557, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+  /* line 567, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
   .infolist {
     margin-top: 80px; }
-  /* line 563, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+  /* line 573, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
   .forumouter p {
     font-size: 17px; }
-  /* line 569, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+  /* line 579, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
   #chatcow2, #chatcow1, #chatcow3 {
     height: auto;
     width: 92%; }
-  /* line 575, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
+  /* line 585, ../../../../../Documents/GitHub/charts/Arla/scss/style.scss */
   .forumouter {
     height: auto; } }
 
