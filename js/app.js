@@ -49,7 +49,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     _currentUser = user;
     updateUser();
     init();
-    _spaService.showPage("chart");
+    _spaService.showPage("categories");
   }
 
   window.updateUser = function() {
