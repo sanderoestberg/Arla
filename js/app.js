@@ -93,7 +93,7 @@ function init() {
         appendCategories(_categories);
       });
 
-    _dataRef.onSnapshot(function(snapshotData) {
+    _dataRef.orderBy("year").onSnapshot(function(snapshotData) {
         _sustainabilityData = [];
         snapshotData.forEach(function(doc) {
           let data = doc.data();
@@ -101,57 +101,298 @@ function init() {
           _sustainabilityData.push(data);
         });
         console.log(_sustainabilityData)
-        appendCows(_sustainabilityData);
-        appendCarbonFootprint(_sustainabilityData);
-        appendMilkproduction(_sustainabilityData);
+
+        appendDataChart(_sustainabilityData);
+        appendBarDataChart(_sustainabilityData);
       });
 }
 
 //------------------------------------DATA - CHART----------------------------------------//
 
 
-function prepareCowData(sustainabilityData) {
+
+
+function prepareData(sustainabilityData) {
   let cows = [];
   let years = [];
+  let milkProduced = [];
+  let carbonFootprint = [];
+  let cowConsumption = [];
+  let energyDiesel = [];
+  let energyElectricity = [];
+  let suffInFeed = [];
+  let CO2OutputDiesel = [];
+  let CO2OutputElectricity = [];
+  let CO2OutputFeed = [];
+  let CO2OutputMethane = [];
   sustainabilityData.forEach(data => {
     cows.push(data.herdYearCows);
     years.push(data.year);
+    milkProduced.push(data.herdMilkProduction);
+    carbonFootprint.push(data.TotalCarbonFootprint);
+    cowConsumption.push(data.cowsFeedConsumption);
+    energyDiesel.push(data.energyDiesel);
+    energyElectricity.push(data.energyElectricity);
+    suffInFeed.push(data.herdSelfSufficiencyInFeed);
+    CO2OutputDiesel.push(data.CO2KgMilkDiesel);
+    CO2OutputElectricity.push(data.CO2KgMilkElectricity);
+    CO2OutputFeed.push(data.CO2KgMilkFeed);
+    CO2OutputMethane.push(data.CO2KgMilkMethane);
   });
   return {
     cows,
-    years
+    years,
+    milkProduced,
+    carbonFootprint,
+    cowConsumption,
+    energyDiesel,
+    energyElectricity,
+    suffInFeed,
+    CO2OutputDiesel,
+    CO2OutputElectricity,
+    CO2OutputFeed,
+    CO2OutputMethane
   }
 }
 
-function appendCows(sustainabilityData) {
-  let data = prepareCowData(sustainabilityData);
+function appendDataChart(sustainabilityData){
+  let data = prepareData(sustainabilityData);
+  console.log(data);
+
+  let chartContainer = document.querySelector('#barChart')
+  let barChart = new Chart(chartContainer, {
+    type: 'bar',
+    data: {
+      datasets: [
+        {data: data.CO2OutputDiesel,
+        label: "Diesel",
+        backgroundColor: "rgb(75, 177, 49, 0.5)",
+        borderColor: "rgb(75, 177, 49)"},
+        {data: data.CO2OutputElectricity,
+          label: "Strøm",
+          backgroundColor: "rgb(0, 108, 58, 0.5)"},
+        {data: data.CO2OutputFeed,
+          label: "Importeret foder",
+          backgroundColor: "rgb(255, 204, 50, 0.5)"},
+        {data: data.CO2OutputMethane,
+          label: "Methane",
+          backgroundColor: "rgb(255, 126, 5, 0.5)"}],
+      labels: data.years,
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'kg CO2 per kg mælk',
+        fontSize: 20
+    }
+  }
+});
+}
+
+let chart;
+
+function appendBarDataChart(sustainabilityData){
+  let data = prepareData(sustainabilityData);
   console.log(data);
 
   let chartContainer = document.querySelector('#myChart')
-  let chart = new Chart(chartContainer, {
+  chart = new Chart(chartContainer, {
     type: 'line',
     data: {
-      datasets: [{
-        data: data.cows,
-        label: "Number of Cows",
-        fill: false,
-        borderColor: "#4BB131",
-
-      }],
-      labels: data.years.sort()
+      datasets: [],
+      labels: data.years
     },
-    options: {
+    /*options: {
       scales: {
         yAxes: [{
           ticks: {
-            min: (Math.min(...data.cows) - 2),
-            max: (Math.max(...data.cows) + 2)
+            min: (Math.min() - 2),
+            max: (Math.max() + 2)
           }
         }]
       }
-    }
+    }*/
 });
+
+window.AddCow = function(element) {
+var randomColorStroke = "#" + Math.floor(Math.random()*16777215).toString(16);
+var randomColorDot = "#" + Math.floor(Math.random()*16777215).toString(16);
+  let datasetToAdd = {
+    label: 'Antal køer',
+      data: data.cows,
+      fill: false,
+      borderColor: randomColorStroke,
+      backgroundColor: randomColorStroke,
+      pointBackgroundColor: randomColorDot,
+      pointBorderColor: randomColorDot,
+      pointHoverBackgroundColor: randomColorDot,
+      pointHoverBorderColor: randomColorDot,
+      type: 'line'
+    };
+    if (element.checked) {
+      chart.data.datasets.push(datasetToAdd);
+      chart.update();
+  }
+    else {
+    let removeIndex = chart.data.datasets.map(function(datasetToAdd) { return datasetToAdd.data; }).indexOf(data.cows);
+    chart.data.datasets.splice(removeIndex, 1);
+    chart.update(); 
+    }
 }
+window.AddMilk = function(element) {
+var randomColorStroke = "#" + Math.floor(Math.random()*16777215).toString(16);
+var randomColorDot = "#" + Math.floor(Math.random()*16777215).toString(16);
+  let datasetToAdd = {
+    label: 'Mælk produceret per ko (kg)',
+      data: data.milkProduced,
+      fill: false,
+      borderColor: randomColorStroke,
+      backgroundColor: randomColorStroke,
+      pointBackgroundColor: randomColorDot,
+      pointBorderColor: randomColorDot,
+      pointHoverBackgroundColor: randomColorDot,
+      pointHoverBorderColor: randomColorDot,
+      type: 'line'
+    };
+    if (element.checked) {
+      chart.data.datasets.push(datasetToAdd);
+      chart.update();
+  }
+    else {
+    let removeIndex = chart.data.datasets.map(function(datasetToAdd) { return datasetToAdd.data; }).indexOf(data.milkProduced);
+    chart.data.datasets.splice(removeIndex, 1);
+    chart.update(); 
+    }
+}
+
+window.AddcowCon = function(element) {
+var randomColorStroke = "#" + Math.floor(Math.random()*16777215).toString(16);
+var randomColorDot = "#" + Math.floor(Math.random()*16777215).toString(16);
+  let datasetToAdd = {
+    label: 'Tørfoder per ko (kg)',
+      data: data.cowConsumption,
+      fill: false,
+      borderColor: randomColorStroke,
+      backgroundColor: randomColorStroke,
+      pointBackgroundColor: randomColorDot,
+      pointBorderColor: randomColorDot,
+      pointHoverBackgroundColor: randomColorDot,
+      pointHoverBorderColor: randomColorDot,
+      type: 'line'
+    };
+    if (element.checked) {
+      chart.data.datasets.push(datasetToAdd);
+      chart.update();
+  }
+    else {
+    let removeIndex = chart.data.datasets.map(function(datasetToAdd) { return datasetToAdd.data; }).indexOf(data.cowConsumption);
+    chart.data.datasets.splice(removeIndex, 1);
+    chart.update(); 
+    }
+}
+window.AddSuffInFeed = function(element) {
+var randomColorStroke = "#" + Math.floor(Math.random()*16777215).toString(16);
+var randomColorDot = "#" + Math.floor(Math.random()*16777215).toString(16);
+  let datasetToAdd = {
+    label: 'Procent tørfoder af kost (%)',
+      data: data.suffInFeed,
+      fill: false,
+      borderColor: randomColorStroke,
+      backgroundColor: randomColorStroke,
+      pointBackgroundColor: randomColorDot,
+      pointBorderColor: randomColorDot,
+      pointHoverBackgroundColor: randomColorDot,
+      pointHoverBorderColor: randomColorDot,
+      type: 'line'
+    };
+    if (element.checked) {
+      chart.data.datasets.push(datasetToAdd);
+      chart.update();
+  }
+    else {
+    let removeIndex = chart.data.datasets.map(function(datasetToAdd) { return datasetToAdd.data; }).indexOf(data.suffInFeed);
+    chart.data.datasets.splice(removeIndex, 1);
+    chart.update(); 
+    }
+}
+window.AddenergyDiesel = function(element) {
+var randomColorStroke = "#" + Math.floor(Math.random()*16777215).toString(16);
+var randomColorDot = "#" + Math.floor(Math.random()*16777215).toString(16);
+  let datasetToAdd = {
+    label: 'Energi - Diesel (liter)',
+      data: data.energyDiesel,
+      fill: false,
+      borderColor: randomColorStroke,
+      backgroundColor: randomColorStroke,
+      pointBackgroundColor: randomColorDot,
+      pointBorderColor: randomColorDot,
+      pointHoverBackgroundColor: randomColorDot,
+      pointHoverBorderColor: randomColorDot,
+      type: 'line'
+    };
+    if (element.checked) {
+      chart.data.datasets.push(datasetToAdd);
+      chart.update();
+  }
+    else {
+    let removeIndex = chart.data.datasets.map(function(datasetToAdd) { return datasetToAdd.data; }).indexOf(data.energyDiesel);
+    chart.data.datasets.splice(removeIndex, 1);
+    chart.update(); 
+    }
+}
+window.AddenergyElectricity = function(element) {
+var randomColorStroke = "#" + Math.floor(Math.random()*16777215).toString(16);
+var randomColorDot = "#" + Math.floor(Math.random()*16777215).toString(16);
+  let datasetToAdd = {
+    label: 'Energi - Strøm (kWh)',
+      data: data.energyElectricity,
+      fill: false,
+      borderColor: randomColorStroke,
+      backgroundColor: randomColorStroke,
+      pointBackgroundColor: randomColorDot,
+      pointBorderColor: randomColorDot,
+      pointHoverBackgroundColor: randomColorDot,
+      pointHoverBorderColor: randomColorDot,
+      type: 'line'
+    };
+    if (element.checked) {
+      chart.data.datasets.push(datasetToAdd);
+      chart.update();
+  }
+    else {
+    let removeIndex = chart.data.datasets.map(function(datasetToAdd) { return datasetToAdd.data; }).indexOf(data.energyElectricity);
+    chart.data.datasets.splice(removeIndex, 1);
+    chart.update(); 
+    }
+}
+window.Addcarbon = function(element) {
+var randomColorStroke = "#" + Math.floor(Math.random()*16777215).toString(16);
+var randomColorDot = "#" + Math.floor(Math.random()*16777215).toString(16);
+  let datasetToAdd = {
+    label: 'Totalt CO2 fodspor (ton)',
+      data: data.carbonFootprint,
+      fill: false,
+      borderColor: randomColorStroke,
+      backgroundColor: randomColorStroke,
+      pointBackgroundColor: randomColorDot,
+      pointBorderColor: randomColorDot,
+      pointHoverBackgroundColor: randomColorDot,
+      pointHoverBorderColor: randomColorDot,
+      type: 'line'
+    };
+    if (element.checked) {
+      chart.data.datasets.push(datasetToAdd);
+      chart.update();
+  }
+    else {
+    let removeIndex = chart.data.datasets.map(function(datasetToAdd) { return datasetToAdd.data; }).indexOf(data.carbonFootprint);
+    chart.data.datasets.splice(removeIndex, 1);
+    chart.update(); 
+    }
+}
+
+}
+
 
 //--------------------------------------CATEGORIES---------------------------------//
 
@@ -173,8 +414,6 @@ function appendCategories(categories) {
     }
     document.querySelector('.grid-test-wrapper').innerHTML = htmlTemplate;    
     function animalCounterCheck(counter, TotalQuestions){
-      console.log(TotalQuestions)
-      console.log(counter)
     if(counter == TotalQuestions){
       return "gold-border"
     }
@@ -223,7 +462,6 @@ function gold(){
 }
 window.inputValue = function (value) {
   let inputField = document.querySelector('#q1')
-  console.log(value)
   if (value > 0) {
   inputField.style.border = "3px solid #006C3A";
   animalsCounter ++
@@ -245,7 +483,6 @@ window.inputValue = function (value) {
 
 window.inputValue2 = function (value) {
   let inputField = document.querySelector('#q2')
-  console.log(value)
   if (value > 0) {
   inputField.style.border = "3px solid #006C3A";
   animalsCounter ++;
@@ -267,7 +504,6 @@ window.inputValue2 = function (value) {
 
 window.inputValue3 = function (value) {
   let inputField = document.querySelector('#q3')
-  console.log(value)
   if (value > 0) {
   inputField.style.border = "3px solid #006C3A";
   animalsCounter ++;
