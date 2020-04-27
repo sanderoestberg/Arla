@@ -28,6 +28,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   function userNotAuthenticated() {
     _currentUser = null; // reset _currentUser
     _spaService.showPage("login");
+    hideTabbar(true);
     // Firebase UI configuration
     const uiConfig = {
       credentialHelper: firebaseui.auth.CredentialHelper.NONE,
@@ -41,12 +42,22 @@ firebase.auth().onAuthStateChanged(function(user) {
     ui.start('#firebaseui-auth-container', uiConfig);
   }
 
+  function hideTabbar(hide) {
+    let tabbar = document.querySelector('#tabbar');
+    if (hide) {
+      tabbar.classList.add("hide");
+    } else {
+      tabbar.classList.remove("hide");
+    }
+  }
+
   window.logout = function() {
     firebase.auth().signOut();
   }
 
   function userAuthenticated(user) {
     _currentUser = user;
+    hideTabbar(false);
     updateUser();
     init();
     _spaService.showPage("categories");

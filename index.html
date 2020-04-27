@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="images/Arla_Logo_RGB_Small.png"/>
     <meta name="author" content="Sander og Oskar">
     <title>Arlagården Plus</title>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
@@ -13,9 +14,9 @@
   <!-- navigation til vores SPA -->
   <nav id="tabbar" class="tabbar hide">
     <a href="#categories"> <img src="images/cat.svg"> </a>
+    <a href="#chart"> <img src="images/chart.svg"> </a>
     <a href="#forum"> <img src="images/Asset 1.svg"> </a>
     <a href="#info"> <img src="images/Asset 2.svg"> </a>
-    <a href="#chart"> <img src="images/chart.svg"> </a>
 
   </nav>
   
@@ -23,6 +24,10 @@
 <body onhashchange="pageChange()">
     
     <section id="login" class="page">
+        <div class="logowrapper">
+            <img src="images/Arla_Logo_RGB_Small.png" alt="arla logo" class="arlalogoinfo">
+            <h3 class="underoverskrift">Gården Plus</h3>
+             </div>
         <section id="firebaseui-auth-container"></section>
     </section>
     <section id="home" class="page"></section>
@@ -137,6 +142,9 @@
             </div>
         </div>
     </div>
+    <article class="login-container">
+        <a href="#login" onclick="logout()">Logout</a>
+    </article>
     </section>
 
 

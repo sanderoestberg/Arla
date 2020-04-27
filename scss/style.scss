@@ -85,6 +85,31 @@ $gold: #D4AF34;
     font-style: normal;
   }
   
+  /* ---------- authentication styling ---------- */
+#firebaseui-auth-container {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.firebaseui-title {
+  text-align: center;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.mdl-button--raised.mdl-button--colored,
+.mdl-button--raised.mdl-button--colored:active,
+.mdl-button--raised.mdl-button--colored:hover {
+  background: $darkgreen;
+  color: #fff;
+  border-radius: 0;
+}
+
+
   /* Using the fonts */
   html, body {
     font-family: 'Arla', Helvetica, Arial, sans-serif;
@@ -112,6 +137,11 @@ $gold: #D4AF34;
     animation: fadeIn 0.4s;
   /* padding equals height of tabbar */
    padding-bottom: 65px;
+}
+.hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.4s, opacity 0.4s linear;
 }
 
 #back-arrow{
@@ -182,28 +212,21 @@ $gold: #D4AF34;
     
 }
 
-  /*
-.grid1{
-    grid-area: grid1;
-}
-.grid2{
-    grid-area: grid2;
-}
-.grid3{
-    grid-area: grid3;
-}
+.login-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
 
-.grid-game-catergories{
-    display: grid;
-    grid-template-areas: 
-    'grid1 grid2'
-    'grid3 grid3'
-    'grid1 grid2';
-    justify-items: center;
-
+  a{
+    text-decoration: none;
+    color: $darkgray;
+    padding: 10px 20px;
+    border: 4px solid $darkgray
+  }
+  a:hover{
+    background-color: $gold;
+  }
 }
-*/
-
 
 .grid-test-wrapper{
   display: grid;
@@ -604,6 +627,7 @@ align-items: center;
 justify-content: space-between;
 p{
   font-size: 20px;
+  margin-right: 10px;
 }
 }
 
@@ -612,8 +636,9 @@ p{
 }
 
 .barChart-container{
-  margin: 0px 5%;
-  width: 90%;
+  margin: 0px 2%;
+  width: 96%;
+  margin-bottom: 30vh;
 }
 
 .switch {
