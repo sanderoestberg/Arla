@@ -99,8 +99,8 @@ function appendCategories(categories) {
       htmlTemplate += `
     <article class="${category.id}" style="grid-area: ${category.grid}">
     <a href="#${category.id}">
-          <div class="icon-border">
-              <img src="${category.img}" class="question-icon" alt="">
+          <div class="${animalCounterCheck(category.animalsCounter, category.numberOfQuestions)}">
+              <img src="${category.img}" class="question-icon" id="${imgCounterCheck(category.animalsCounter)}" alt="">
               <p><span>${category.animalsCounter}</span>/${category.numberOfQuestions}</p>
           </div>
           </a>
@@ -108,20 +108,53 @@ function appendCategories(categories) {
       `;
     }
     document.querySelector('.grid-test-wrapper').innerHTML = htmlTemplate;    
+    function animalCounterCheck(counter, TotalQuestions){
+      console.log(TotalQuestions)
+      console.log(counter)
+    if(counter == TotalQuestions){
+      return "gold-border"
+    }
+    else {
+      return "icon-border"
+    }
+    
 }
+    function imgCounterCheck(counter){
+    if(counter === 3){
+      return "gold-icon"
+      
+    }
+    else {
+      return ""
+    }
+    
+}
+document.getElementById("gold-icon").src = "images/cow-gold.svg";
+}
+
+
 
 let animalsCounter = 0;
 let question1 = "";
 let question2 = "";
+let question3 = "";
+
 function gold(){
   if(animalsCounter === 3){
     document.getElementById("cow-icon").src = "images/cow-gold.svg";
-    document.querySelector("#cow-border").style.border = "6px solid #D4AF34;"
-    document.querySelector(".icon-border").style.border = "0px solid #D4AF34;"
+    document.getElementById("cow-border").style.borderColor = "#D4AF34";
+    document.getElementById("q1").style.borderColor = "#D4AF34";
+    document.getElementById("q2").style.borderColor = "#D4AF34";
+    document.getElementById("q3").style.borderColor = "#D4AF34";
+    
     
   }
   else {
     document.getElementById("cow-icon").src = "images/cow.svg";  
+    document.getElementById("cow-border").style.borderColor = "#006C3A";
+    document.getElementById("q1").style.borderColor = "#006C3A";
+    document.getElementById("q2").style.borderColor = "#006C3A";
+    document.getElementById("q3").style.borderColor = "#006C3A";
   }
 }
 window.inputValue = function (value) {
@@ -174,7 +207,7 @@ window.inputValue3 = function (value) {
   if (value > 0) {
   inputField.style.border = "3px solid #006C3A";
   animalsCounter ++;
-  question2 = value;
+  question3 = value;
   }
   else {
       inputField.style.border = "none";
@@ -191,15 +224,6 @@ window.inputValue3 = function (value) {
   }
 
 
-  function AnimalCounterDB() {
-    //showLoader(true);
-    // Når man har valgt dato og klikker på knappen "tilføj" laver den en ny collection under userID
-    // Hvor den tilføjer madId. Samt ExpireDate fra global variablen. 
-    _userRef.doc(_currentUser.uid).collection('fridge').add({
-      animalsCounter
-    });
-  }
-
 window.addAnimal = function() {
   addAnimal();
 }
@@ -208,7 +232,7 @@ window.addAnimal = function() {
     _questionRef.doc('Animals').set({
         question1,
         question2,
-        question3: 132,
+        question3,
         animalsCounter
     }, {
         merge: true
