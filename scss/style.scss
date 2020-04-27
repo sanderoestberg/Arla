@@ -149,8 +149,15 @@ $gold: #D4AF34;
     width: 100px;
     height: 100px;
     border-radius: 100px;
-    border: 6px solid $darkgreen;
-    
+    border-width: 6px;
+    border-style: solid;
+    border-color: #006C3A;
+  }
+
+  #cow-border{
+    border-width: 6px;
+    border-style: solid;
+    border-color: #006C3A;
   }
 
 .gold-border{
@@ -162,7 +169,10 @@ $gold: #D4AF34;
     width: 100px;
     height: 100px;
     border-radius: 100px;
-  border: 6px solid #D4AF34;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #D4AF34;
+    
 }
 
   /*
@@ -202,6 +212,7 @@ a{
 }
 }
 .grid-icon-wrapper{
+  margin-top: 15px;
 display: grid;
 grid-template-columns: 1fr 1fr;
 justify-items: center;
@@ -554,9 +565,15 @@ p{
 }
 
 
+.cream-text {
+  display: none;
+}
+
 /* ---------> MEDIA Q <------- */
 
 @media screen and (min-width: 700px){
+
+  
 
   body{
     background-image: url(../images/milk-laptop.png);
@@ -586,6 +603,35 @@ p{
     height: auto;
   }
 
+
+.cream-grid{
   
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 5vh 10%;
 }
 
+.grid-test-wrapper{
+ max-width: 850px;
+}
+
+.cream-text {
+  display: flex;
+}
+
+.question-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column  ;
+  max-width: 700px;
+  }
+  .breakline{
+    max-width: 450px;
+  }
+  .media-question-container{
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+  }
+
+}
