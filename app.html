@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Sander og Oskar">
-    <title>Arla Gården Plus</title>
+    <title>Arlagården Plus</title>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,11 +15,13 @@
     <a href="#categories"> <img src="images/cat.svg"> </a>
     <a href="#forum"> <img src="images/Asset 1.svg"> </a>
     <a href="#info"> <img src="images/Asset 2.svg"> </a>
+    <a href="#chart"> <img src="images/Asset 2.svg"> </a>
 
   </nav>
-
+  
 
 <body onhashchange="pageChange()">
+    
     <section id="login" class="page">
         <section id="firebaseui-auth-container"></section>
     </section>
@@ -47,7 +49,9 @@
     </div>
     </section>
     <section id="Animals" class="page" onclick="init()">
+        <div id="back-arrow"><a href="#" onclick="history.go(-1)"><img src="images/pil.svg"></a></div>
         <div class="grid-icon-wrapper">
+        
             <article class="grid-solo">
                 <a href="#categories">
                     <div class="icon-border" id="cow-border">
@@ -305,6 +309,10 @@
 
                         </div>
 
+            </section>
+            <section id="chart" class="page">
+            <canvas id="myChart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>   
             </section>
 
                   <!-- loader  -->

@@ -10,9 +10,12 @@ window.pageChange = function () {
 
 const _questionRef = _db.collection("questions");
 const _userRef = _db.collection("users")
+const _dataRef = _db.collection("sustainabilityData")
 
 let _categories;
 let _currentUser;
+let _sustainabilityData;
+
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) { // if user exists and is authenticated
@@ -46,7 +49,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     _currentUser = user;
     updateUser();
     init();
-    _spaService.showPage("forum");
+    _spaService.showPage("chart");
   }
 
   window.updateUser = function() {
@@ -89,8 +92,69 @@ function init() {
         });
         appendCategories(_categories);
       });
+
+    _dataRef.onSnapshot(function(snapshotData) {
+        _sustainabilityData = [];
+        snapshotData.forEach(function(doc) {
+          let data = doc.data();
+          data.id = doc.id;
+          _sustainabilityData.push(data);
+        });
+        console.log(_sustainabilityData)
+        appendCows(_sustainabilityData);
+        appendCarbonFootprint(_sustainabilityData);
+        appendMilkproduction(_sustainabilityData);
+      });
 }
-//----------------------------------------------------------------------------//
+
+//------------------------------------DATA - CHART----------------------------------------//
+
+
+function prepareCowData(sustainabilityData) {
+  let cows = [];
+  let years = [];
+  sustainabilityData.forEach(data => {
+    cows.push(data.herdYearCows);
+    years.push(data.year);
+  });
+  return {
+    cows,
+    years
+  }
+}
+
+function appendCows(sustainabilityData) {
+  let data = prepareCowData(sustainabilityData);
+  console.log(data);
+
+  let chartContainer = document.querySelector('#myChart')
+  let chart = new Chart(chartContainer, {
+    type: 'line',
+    data: {
+      datasets: [{
+        data: data.cows,
+        label: "Number of Cows",
+        fill: false,
+        borderColor: "#4BB131",
+
+      }],
+      labels: data.years.sort()
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: (Math.min(...data.cows) - 2),
+            max: (Math.max(...data.cows) + 2)
+          }
+        }]
+      }
+    }
+});
+}
+
+//--------------------------------------CATEGORIES---------------------------------//
+
 
 
 function appendCategories(categories) {
@@ -238,3 +302,5 @@ window.addAnimal = function() {
         merge: true
       });
     }
+
+
