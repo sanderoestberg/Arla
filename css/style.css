@@ -216,7 +216,7 @@ body {
     color: #363E42; }
   /* line 275, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .question-input input {
-    background-color: #D1D2CE;
+    background-color: #E4E4E4;
     border: none;
     border-radius: 7px;
     margin-right: 3px;
@@ -297,12 +297,13 @@ h4 {
   /* line 357, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .forumouter img {
     height: 70%;
+    width: auto;
     margin: 5px; }
-  /* line 362, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 363, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .forumouter p {
     font-size: 13px; }
 
-/* line 368, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 369, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .chatcow {
   display: grid;
   grid-row: 1/3;
@@ -310,17 +311,17 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid #D1D2CE;
+  border: 3px solid #E4E4E4;
   border-radius: 5px; }
 
-/* line 379, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 380, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .forumpost {
   display: grid;
   grid-row: 2/3;
   grid-column: 1/3;
   padding: 5px; }
 
-/* line 386, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 387, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .profilbillede {
   display: grid;
   grid-row: 1/2;
@@ -330,14 +331,14 @@ h4 {
   align-items: center;
   padding: 5px;
   padding-right: 0; }
-  /* line 395, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 396, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .profilbillede img {
     height: 70%;
     padding: 0;
     padding-right: 5px;
     margin: 0; }
 
-/* line 403, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 404, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .flag {
   display: grid;
   grid-row: 1/2;
@@ -346,38 +347,38 @@ h4 {
   justify-content: flex-end;
   align-items: center;
   padding: 5px; }
-  /* line 411, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 412, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .flag img {
     height: 70%;
     padding: 0;
     padding-left: 5px;
     margin: 0; }
 
-/* line 420, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 421, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 h5 {
   font-size: 17px; }
 
-/* line 424, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 425, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .svar {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 5px; }
-  /* line 430, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 431, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .svar img {
     height: 100%;
     padding: 0;
     padding-right: 5px;
     margin: 0; }
 
-/* line 438, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 439, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .comment {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px; }
 
-/* line 445, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 446, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .tid {
   display: flex;
   justify-content: flex-start;
@@ -385,17 +386,17 @@ h5 {
   padding: 5px; }
 
 /* ---------> Style Topic <--------- */
-/* line 454, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 455, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 #forumtopicdiv {
   display: flex;
   flex-direction: column;
   align-items: center; }
 
-/* line 459, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 460, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 #topicouter {
   margin-top: 20px; }
 
-/* line 463, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 464, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .forumreplyyellow {
   align-self: flex-end;
   display: grid;
@@ -408,15 +409,15 @@ h5 {
   margin-right: 2%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 30% 40% 30%; }
-  /* line 478, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 479, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .forumreplyyellow img {
     height: 70%;
     margin: 5px; }
-  /* line 483, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 484, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .forumreplyyellow p {
     font-size: 13px; }
 
-/* line 489, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 490, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .forumreplygreen {
   align-self: flex-start;
   display: grid;
@@ -429,23 +430,23 @@ h5 {
   margin-left: 2%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 30% 40% 30%; }
-  /* line 504, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 505, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .forumreplygreen img {
     height: 70%;
     margin: 5px; }
-  /* line 509, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 510, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .forumreplygreen p {
     font-size: 13px; }
 
-/* line 515, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 516, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .forumreplyyellow, .forumreplygreen {
   background-color: white; }
 
 /* -------> TABBAR <------ */
 /* styling af tabbar */
-/* line 522, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 523, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .tabbar {
-  background-color: #D1D2CE;
+  background-color: #E4E4E4;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -453,68 +454,72 @@ h5 {
   z-index: 9999;
   display: flex;
   justify-content: center; }
-  /* line 533, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 534, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .tabbar img {
-    height: 40px;
+    height: 55px;
     width: auto; }
 
 /* Style på og omkring links i baren */
-/* line 540, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 541, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .tabbar a {
   display: inline-block;
   padding: 10px 26px; }
 
 /* style ved hover */
-/* line 547, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 548, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .tabbar a:hover {
-  background-color: #D1D2CE; }
+  background-color: #363E42; }
 
 /* style når en side er aktiv*/
-/* line 552, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 553, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .tabbar a.active {
-  background-color: #D1D2CE; }
+  background-color: #363E42; }
 
-/* line 557, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+/* line 558, ../../../../../Documents/GitHub/Arla/scss/style.scss */
 .cream-text {
   display: none; }
 
 /* ---------> MEDIA Q <------- */
 @media screen and (min-width: 700px) {
-  /* line 567, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 568, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   body {
     background-image: url(../images/milk-laptop.png);
     background-size: cover;
     background-repeat: no-repeat; }
-  /* line 573, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 574, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .infolist {
-    margin-top: px; }
-  /* line 579, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+    margin-top: 80px; }
+  /* line 580, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .forumouter p {
-    font-size: 15px; }
-  /* line 585, ../../../../../Documents/GitHub/Arla/scss/style.scss */
-  .chatcow {
+    font-size: 17px; }
+  /* line 586, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  #chatcow2, #chatcow1, #chatcow3 {
+    height: auto;
     width: 92%; }
-  /* line 590, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 592, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  .forumouter {
+    height: auto; }
+  /* line 597, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .cream-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 5vh 10%; }
-  /* line 597, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 604, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .grid-test-wrapper {
     max-width: 850px; }
-  /* line 601, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 608, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .cream-text {
     display: flex; }
-  /* line 605, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 612, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .question-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
     max-width: 700px; }
-  /* line 611, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 618, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .breakline {
     max-width: 450px; }
-  /* line 614, ../../../../../Documents/GitHub/Arla/scss/style.scss */
+  /* line 621, ../../../../../Documents/GitHub/Arla/scss/style.scss */
   .media-question-container {
     margin-top: 2vh;
     display: flex;
